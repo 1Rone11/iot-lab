@@ -4,7 +4,7 @@
 
 ## 不可违反的架构约定
 
-1. **唯一 Vue 客户端是 `apps/client`**，包含作品集页面与设备控制台。
+1. **唯一 Vue 客户端是 `apps/client`**，包含项目主页页面与设备控制台。
 2. Web 与 Electron 共享 `apps/client` 的页面、组件、路由、状态和 API client；禁止在 `apps/desktop` 下再建一套 Vue renderer UI。
 3. `apps/desktop` 只放 Electron main、preload、IPC、应用生命周期和打包配置。桌面能力必须通过最小权限的桥接 API 暴露。
 4. 客户端业务页面不直接导入 Node.js / Electron 模块。共享客户端通过平台能力抽象访问浏览器能力或 `window.fieldlabDesktop`。

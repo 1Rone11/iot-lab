@@ -4,7 +4,7 @@
 
 本项目采用**一套 Vue 3 + TypeScript 客户端、两种运行目标、一个云端 API**：
 
-- `apps/client` 是唯一 Vue 应用，包含个人作品集页面与设备控制台。
+- `apps/client` 是唯一 Vue 应用，包含项目主页与设备控制台。
 - Web 通过 Vite 构建为静态资源，由 Nginx 托管。
 - Electron 加载同一客户端构建产物。`apps/desktop` 只包含 Electron main、preload、IPC、安全配置、应用生命周期与打包配置，不包含第二套 Vue 页面。
 - 运行目标的差异通过运行时配置和平台适配层处理，不允许在各个 Vue 组件里散落 `isElectron` 分支。
@@ -21,7 +21,7 @@
 ┌──────────────────────────────────────────────────────────┐
 │                    apps/client                            │
 │     唯一 Vue 3 + TypeScript 应用 / ECharts / Router       │
-│       作品集首页 + 设备控制台 + API client + 平台适配      │
+│       项目主页 + 设备控制台 + API client + 平台适配       │
 └────────────────┬─────────────────────────┬───────────────┘
                  │ Web target              │ Electron target
                  ▼                         ▼
@@ -58,7 +58,7 @@ Electron 主进程不能直接绕过 API 访问数据库。preload 仅提供客�
 
 | 层 | 技术 | 约束 / 用途 |
 |---|---|---|
-| 唯一共享客户端 | Vue 3、TypeScript、Vite、Vue Router、ECharts | 作品集首页和设备控制台；只写一套 UI |
+| 唯一共享客户端 | Vue 3、TypeScript、Vite、Vue Router、ECharts | 项目主页和设备控制台；只写一套 UI |
 | Web 目标 | Nginx 静态资源、HTTPS | 同源访问 REST / WSS |
 | Electron 壳 | Electron、TypeScript、electron-builder | main / preload / IPC / 系统能力 / 打包；不复制 Vue UI |
 | 平台桥接 | 自定义窄接口 + `window.fieldlabDesktop` 类型声明 | 浏览器 fallback 与桌面能力隔离 |
@@ -131,7 +131,7 @@ fieldlab-iot/
 
 ### 5.3 路由
 
-初期采用 hash router，降低 Web 静态托管与 Electron `file://` 路由的差异：Web 根页面展示作品集，控制台通过客户端路由访问；Electron 默认打开控制台路由。SEO 不属于 MVP 目标。将来如需搜索引擎优化，再单独评估 history router 和服务器 fallback。
+初期采用 hash router，降低 Web 静态托管与 Electron `file://` 路由的差异：Web 根页面展示项目主页，控制台通过客户端路由访问；Electron 默认打开控制台路由。SEO 不属于 MVP 目标。将来如需搜索引擎优化，再单独评估 history router 和服务器 fallback。
 
 ## 6. 核心数据流
 

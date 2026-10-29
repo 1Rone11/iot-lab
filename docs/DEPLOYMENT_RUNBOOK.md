@@ -34,7 +34,7 @@
 
 1. 在开发机执行客户端构建。
 2. 将构建后的静态资源部署到服务器的 Nginx 静态目录。
-3. Nginx 提供作品集首页与控制台客户端路由，并将 `/api` 与 WebSocket 路径反向代理到 API。
+3. Nginx 提供项目主页与控制台客户端路由，并将 `/api` 与 WebSocket 路径反向代理到 API。
 4. Web 客户端使用同源 `/api` 和 WSS；避免在前端组件中硬编码线上地址。
 
 第一版建议使用 hash router，以避免静态托管路由回退与 Electron `file://` 路由行为不同。如果后续改用 history router，必须补充 Nginx fallback 规则和 Electron 路由测试。
