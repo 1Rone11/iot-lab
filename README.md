@@ -49,7 +49,7 @@ Web 和 Electron **不是两套独立前端**。二者共用 `apps/client` 中�
 ## 4. 推荐仓库结构
 
 ```text
-fieldlab-iot/
+iot-lab/
 ├── apps/
 │   ├── client/                # 唯一 Vue 应用：项目主页 + 控制台，Web/Electron 共用
 │   ├── desktop/               # 仅 Electron main、preload、IPC 与打包配置
@@ -112,8 +112,8 @@ fieldlab-iot/
 
 ```bash
 # 换一台机器时用 clone；本机已有目录则跳过这行
-git clone git@github.com:1Rone11/fieldlab-iot.git
-cd fieldlab-iot
+git clone git@github.com:1Rone11/iot-lab.git
+cd iot-lab
 nvm use
 corepack enable
 pnpm install
@@ -124,7 +124,7 @@ cp .env.example .env   # 再按本机情况改 .env，真实值不入库
 
 Sprint 0 只包含文档、仓库规则与工程配置，还没有可运行的应用。`apps/` 与 `packages/` 会在 Sprint 1 由 `pnpm create vue` 等命令逐个创建，届时本节会补上 `pnpm dev` 等脚本说明。
 
-> 本地目录名与 GitHub 仓库名不同不影响使用。仓库名为 `fieldlab-iot`，与项目正式名称一致，便于检索。
+> 仓库名为 `iot-lab`，项目正式名称为 **FieldLab IoT**（根 `package.json` 的 `name` 字段为 `fieldlab-iot`）。目录名、仓库名、包名三者不必一致，但要知道各自出现在哪里。
 
 ## 7. 学习方法
 

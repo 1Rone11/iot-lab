@@ -76,7 +76,7 @@ Electron 主进程不能直接绕过 API 访问数据库。preload 仅提供客�
 ## 4. 目录建议
 
 ```text
-fieldlab-iot/
+iot-lab/
 ├── apps/
 │   ├── client/                    # 唯一 Vue app：Portfolio + Console
 │   │   └── src/
