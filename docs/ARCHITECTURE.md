@@ -56,20 +56,20 @@ Electron 主进程不能直接绕过 API 访问数据库。preload 仅提供客�
 
 ## 3. 技术栈基线
 
-| 层 | 技术 | 约束 / 用途 |
-|---|---|---|
-| 唯一共享客户端 | Vue 3、TypeScript、Vite、Vue Router、ECharts | 项目主页和设备控制台；只写一套 UI |
-| Web 目标 | Nginx 静态资源、HTTPS | 同源访问 REST / WSS |
-| Electron 壳 | Electron、TypeScript、electron-builder | main / preload / IPC / 系统能力 / 打包；不复制 Vue UI |
-| 平台桥接 | 自定义窄接口 + `window.fieldlabDesktop` 类型声明 | 浏览器 fallback 与桌面能力隔离 |
-| API | Node.js LTS、Express 5、TypeScript | 模块化单体、REST、WebSocket、MQTT consumer |
-| Shared contracts | TypeScript 类型与运行时 schema | DTO、设备消息、告警状态；外部数据必须 runtime validate |
-| Simulator | Node.js ESM；第一阶段以 JavaScript 编写 | 专门练习 JS 核心语义 |
-| Messaging | Eclipse Mosquitto、MQTT.js | 内部网络、Topic 与 payload 契约 |
-| Database | PostgreSQL | SQL、迁移、约束、索引、备份恢复 |
-| Infra | Docker Compose、Nginx、HTTPS | 适配 2 GiB 轻量服务器 |
-| Tests | 与初始化版本兼容的测试工具 | 单元、API 集成、共享客户端和 Electron 冒烟测试 |
-| AI extension | 云端模型 API + 文档检索 | 可选增强，不依赖服务器本地模型 |
+| 层                | 技术                                       | 约束 / 用途                                     |
+| ---------------- | ---------------------------------------- | ------------------------------------------- |
+| 唯一共享客户端          | Vue 3、TypeScript、Vite、Vue Router、ECharts | 项目主页和设备控制台；只写一套 UI                          |
+| Web 目标           | Nginx 静态资源、HTTPS                         | 同源访问 REST / WSS                             |
+| Electron 壳       | Electron、TypeScript、electron-builder     | main / preload / IPC / 系统能力 / 打包；不复制 Vue UI |
+| 平台桥接             | 自定义窄接口 + `window.fieldlabDesktop` 类型声明   | 浏览器 fallback 与桌面能力隔离                        |
+| API              | Node.js LTS、Express 5、TypeScript         | 模块化单体、REST、WebSocket、MQTT consumer          |
+| Shared contracts | TypeScript 类型与运行时 schema                 | DTO、设备消息、告警状态；外部数据必须 runtime validate       |
+| Simulator        | Node.js ESM；第一阶段以 JavaScript 编写          | 专门练习 JS 核心语义                                |
+| Messaging        | Eclipse Mosquitto、MQTT.js                | 内部网络、Topic 与 payload 契约                     |
+| Database         | PostgreSQL                               | SQL、迁移、约束、索引、备份恢复                           |
+| Infra            | Docker Compose、Nginx、HTTPS               | 适配 2 GiB 轻量服务器                              |
+| Tests            | 与初始化版本兼容的测试工具                            | 单元、API 集成、共享客户端和 Electron 冒烟测试              |
+| AI extension     | 云端模型 API + 文档检索                          | 可选增强，不依赖服务器本地模型                             |
 
 安装时选择官方兼容的稳定版本并提交 lockfile。不要仅依赖 `latest` 作为生产版本约束。
 
@@ -194,7 +194,7 @@ iot-lab/
 - 唯一约束建议：`(device_id, message_id, metric_name)`。
 - 候选索引：`(device_id, metric_name, reported_at DESC)`；最终用 `EXPLAIN ANALYZE` 验证。
 
-### alerts / alert_events
+### alerts / alert\_events
 
 - `alerts`：设备、测点、严重程度、阈值、当前值、状态、打开/确认/关闭时间。
 - `alert_events`：告警 ID、事件类型、操作者、备注、创建时间。
@@ -250,3 +250,4 @@ Web adapter 使用浏览器 API 或安全降级。Electron adapter 调用 `windo
 - PostgreSQL / MQTT 不映射公网端口；外部仅开放必要的 HTTPS，SSH 限制来源。
 - 不在服务器运行本地大模型；限制日志、连接池与数据保留期。
 - 公开演示数据必须明确标注为模拟数据。
+
