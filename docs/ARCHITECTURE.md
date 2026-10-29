@@ -78,9 +78,9 @@ Electron 主进程不能直接绕过 API 访问数据库。preload 仅提供客�
 ```text
 iot-lab/
 ├── apps/
-│   ├── client/                    # 唯一 Vue app：Portfolio + Console
+│   ├── client/                    # 唯一 Vue app：主页 + 控制台
 │   │   └── src/
-│   │       ├── pages/              # Portfolio、Dashboard、Device、Alerts
+│   │       ├── pages/              # Home、Dashboard、Device、Alerts
 │   │       ├── components/         # 复用 UI 组件
 │   │       ├── router/             # 共享路由
 │   │       ├── services/           # REST / WebSocket client
