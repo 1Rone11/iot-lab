@@ -2,9 +2,16 @@
   "name": "fieldlab-iot",
   "version": "0.0.0",
   "private": true,
-  "description": "FieldLab IoT - 一套 Vue 3 客户端、两种运行目标（Web + Electron）的工业物联网学习型作品集项目",
+  "description": "FieldLab IoT - 一套 Vue 3 客户端、两种运行目标（Web + Electron）的工业物联网技术验证项目",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=22.18.0"
   },
-  "packageManager": "pnpm@10.17.1"
+  "packageManager": "pnpm@10.17.1",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "build": "pnpm -r build",
+    "type-check": "pnpm -r type-check",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r --if-present test:unit --run"
+  }
 }
